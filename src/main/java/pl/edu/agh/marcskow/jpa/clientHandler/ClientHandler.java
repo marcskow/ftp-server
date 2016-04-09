@@ -11,7 +11,6 @@ public class ClientHandler implements Runnable {
 
     private Socket clientSocket;
     private FtpSession session;
-    private boolean listening = true;
 
     public ClientHandler(Socket client){
         clientSocket = client;
@@ -22,17 +21,22 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             session.startSession();
-            session.write(FtpSession.WELCOME_MESSAGE);
 
-            while (listening){
+            while (session.isUp()){
                 session.handleRequestIfReceived();
-                listening = session.isUp();
             }
 
             session.closeConnection();
         }
         catch (IOException e){
             log.error("Connection with client failed ", e);
+        }
+        finally {
+            try {
+                session.closeConnection();
+            } catch (IOException e){
+                log.error("Closing connection failed ", e);
+            }
         }
     }
 

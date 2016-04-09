@@ -6,7 +6,7 @@ import java.io.IOException;
  * Created by intenso on 06.04.16.
  */
 public interface Session {
-    void startSession();
+    void startSession() throws IOException;
 
     void handleRequestIfReceived() throws IOException;
 
@@ -18,5 +18,16 @@ public interface Session {
 
     boolean isUp();
 
-    void closeConnection();
+    void closeConnection() throws IOException;
+
+    void setUserLogin(String login);
+    String getUserLogin();
+
+    void setUserPassword(String password);
+    String getUserPassword();
+
+    void setNeededCommand(String command);
+    String getNeededCommand();
+
+    void setIsLoggedIn(boolean isLoggedIn);
 }

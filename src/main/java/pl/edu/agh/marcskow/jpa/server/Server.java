@@ -15,12 +15,11 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class Server implements FtpServer, Runnable {
     private final static int PORT = 4444;
+    private final static int FIXED_CLIENTS_AMOUNT = 20;
     private FtpServerContext context;
 
     @Getter @Setter
     private boolean isRunning;
-    @Getter @Setter
-    private int FIXED_CLIENTS_AMOUNT = 20;
 
     public Server(FtpServerContext context) {
         this.context = context;
@@ -47,8 +46,8 @@ public class Server implements FtpServer, Runnable {
 
     @Override
     public void run() {
-        start();
         isRunning = true;
+        start();
     }
 
     @Override

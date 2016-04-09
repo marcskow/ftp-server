@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class Client {
-    private boolean isLoggedIn;
+    private boolean isLoggedIn = false;
     private String username;
     private String password;
 }

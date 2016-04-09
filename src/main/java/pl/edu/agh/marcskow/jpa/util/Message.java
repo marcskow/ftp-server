@@ -11,4 +11,12 @@ public class Message {
     public String getArgument(int index){
         return args[index];
     }
+
+    public String toString(){
+        String result = title;
+        for (String s : args) {
+            result = result + " " + s;
+        }
+        return result;
+    }
 }
