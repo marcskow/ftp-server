@@ -96,7 +96,7 @@ public class FtpSession implements Session {
                 default: write("503 Bad sequence of commands ");
             }
         }
-        catch (InvalidMessageException e){
+        catch (InvalidMessageException | IOException e){
             throw new IOException(e.getMessage(), e);
         }
 

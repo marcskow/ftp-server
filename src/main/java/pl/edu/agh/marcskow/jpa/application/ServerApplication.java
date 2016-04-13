@@ -15,7 +15,9 @@ public class ServerApplication extends Application {
         Scene scene = new Scene(ftpRootPane, ftpRootPane.getPrefWidth(), ftpRootPane.getPrefHeight());
         primaryStage.setScene(scene);
         primaryStage.show();
+        
     }
+
 
     public static void main(String[] args) {
         Application.launch(ServerApplication.class);

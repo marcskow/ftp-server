@@ -3,8 +3,10 @@ package pl.edu.agh.marcskow.jpa.command;
 import pl.edu.agh.marcskow.jpa.clientHandler.Session;
 import pl.edu.agh.marcskow.jpa.util.Message;
 
+import java.io.IOException;
 
-public class USER extends AbstractCommand{
+
+public class USER extends ActiveCommand{
     private Session session;
     private Message body;
 
@@ -14,7 +16,7 @@ public class USER extends AbstractCommand{
     }
 
     @Override
-    public String execute() {
+    public String execute(){
         if(body.getArgs().length != 0) {
             String login = body.getArgument(0);
             session.setUserLogin(login);

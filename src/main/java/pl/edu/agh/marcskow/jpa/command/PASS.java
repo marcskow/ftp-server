@@ -1,30 +1,23 @@
 package pl.edu.agh.marcskow.jpa.command;
 
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
-import pl.edu.agh.marcskow.jpa.clientHandler.Session;
-import pl.edu.agh.marcskow.jpa.data.File;
-import pl.edu.agh.marcskow.jpa.data.Group;
+import pl.edu.agh.marcskow.jpa.clientHandler.FtpSession;
 import pl.edu.agh.marcskow.jpa.data.User;
 import pl.edu.agh.marcskow.jpa.util.Message;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.io.IOException;
 import java.util.List;
 
 /**
  * Created by intenso on 09.04.16.
  */
-public class PASS extends AbstractCommand{
-    private Session session;
+public class PASS extends ActiveCommand{
+    private FtpSession session;
     private Message body;
-    private String password;
 
-    public PASS(Session session, Message body){
+    public PASS(FtpSession session, Message body){
         this.session = session;
         this.body = body;
     }
@@ -33,10 +26,9 @@ public class PASS extends AbstractCommand{
     public String execute() {
         if(session.getNeededCommand().equals("PASS")
                 && !(body.getArgs().length == 0)){
-            password = body.getArgument(0);
-            session.setUserPassword(password);
+            String password = body.getArgument(0);
 
-            if(logIn()){
+            if(logIn(password)){
                 session.setIsLoggedIn(true);
                 return "230 User logged in";
             }
@@ -49,24 +41,23 @@ public class PASS extends AbstractCommand{
         }
     }
 
-    private boolean logIn()  {
+    private boolean logIn(String password)  {
         String login = session.getUserLogin();
-        String passwrod = session.getUserPassword();
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        org.hibernate.Session hibernateSession = sessionFactory.openSession();
+        Session hibernateSession = sessionFactory.openSession();
+
         String hql = "FROM User U WHERE U.username = :login";
+
         Query query = hibernateSession.createQuery(hql);
         query.setParameter("login",login);
-        List result = query.list();
-        try {
-            session.write(((User)result.get(0)).getUsername());
-        }
-        catch (IOException e){
-            System.out.println("XDDDDD");
-        }
 
-        return true;
+        List result = query.list();
+        User user = (User)result.get(0);
+
+        hibernateSession.close();
+
+        return user.getPassword().equals(password) && user.getUsername().equals(login);
     }
 
 }
