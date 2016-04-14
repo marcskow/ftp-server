@@ -8,5 +8,5 @@ import java.io.IOException;
  * Created by intenso on 06.04.16.
  */
 public abstract class AbstractCommand implements Command {
-    public abstract String execute();
+
 }

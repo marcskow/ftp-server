@@ -5,29 +5,38 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import pl.edu.agh.marcskow.jpa.client.Client;
-import pl.edu.agh.marcskow.jpa.command.PASS;
-import pl.edu.agh.marcskow.jpa.command.USER;
+import pl.edu.agh.marcskow.jpa.command.*;
 import pl.edu.agh.marcskow.jpa.exceptions.InvalidMessageException;
+import pl.edu.agh.marcskow.jpa.server.Server;
 import pl.edu.agh.marcskow.jpa.util.Message;
 import pl.edu.agh.marcskow.jpa.util.Parser;
 
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 @Slf4j
 public class FtpSession implements Session {
     public static final String WELCOME_MESSAGE = "Hi, it's Brownie, welcome !";
+    @Getter @Setter
     private String rootDirectory = "/home/intenso/ftpServer/";
+    @Getter @Setter
+    private PassiveServer passive;
+    @Getter @Setter
     private Socket clientSocket;
     private boolean isUp;
     @Getter @Setter
     private Client client;
+    @Getter @Setter
     private PrintWriter out;
+    @Getter @Setter
     private BufferedReader in;
     @Getter @Setter
     private String commandShouldBe;
     @Getter @Setter
     private String lastCommand = "USER";
+    @Getter @Setter
+    private int passivePort;
 
     public FtpSession(Socket socket){
         clientSocket = socket;
@@ -77,13 +86,13 @@ public class FtpSession implements Session {
             log.info("REQ: " + message);
 
             switch (message.getTitle()){
-                case "USER": new USER(this,message).execute(); break;
-                case "PASS": new PASS(this,message).execute(); break;
+                case "USER": write(new USER(this,message).execute()); break;
+                case "PASS": write(new PASS(this,message).execute()); break;
                 case "QUIT": break;
                 case "NOOP": break;
-                case "PASV": break;
-                case "STOR": break;
-                case "RETR": break;
+                case "PASV": write(new PASV(this,message).execute()); break;
+                case "STOR": new STOR(this,message).execute(); break;
+                case "RETR": new RETR(this,message).execute(); break;
                 case "APPE": break;
                 case "ABOR": break;
                 case "DELE": break;
@@ -103,11 +112,7 @@ public class FtpSession implements Session {
         lastCommand = request;
     }
 
-    private void handleCommand(Message message) throws IOException {
-       if(!message.getTitle().equals(commandShouldBe) && !commandShouldBe.equals("ANY")){
-           write("503 Bad sequence of commands ");
-       }
-    }
+
 
     @Override
     public void setUserLogin(String login) {

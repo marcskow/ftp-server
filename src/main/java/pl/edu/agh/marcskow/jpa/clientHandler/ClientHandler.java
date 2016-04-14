@@ -24,11 +24,12 @@ public class ClientHandler implements Runnable {
 
             while (session.isUp()){
                 session.handleRequestIfReceived();
+     //           Thread.sleep(500);
             }
 
             session.closeConnection();
         }
-        catch (IOException e){
+        catch (IOException e){  //| InterruptedException e){
             log.error("Connection with client failed ", e);
         }
         finally {
