@@ -11,6 +11,7 @@ import pl.edu.agh.marcskow.jpa.server.Server;
 import pl.edu.agh.marcskow.jpa.util.Message;
 import pl.edu.agh.marcskow.jpa.util.Parser;
 
+import javax.annotation.Generated;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,11 +20,12 @@ import java.net.Socket;
 public class FtpSession implements Session {
     public static final String WELCOME_MESSAGE = "Hi, it's Brownie, welcome !";
     @Getter @Setter
-    private String rootDirectory = "/home/intenso/ftpServer/";
+    private String rootDirectory = "/home/intenso/ftpServer";
     @Getter @Setter
     private PassiveServer passive;
     @Getter @Setter
     private Socket clientSocket;
+    @Getter @Setter
     private boolean isUp;
     @Getter @Setter
     private Client client;
@@ -37,6 +39,8 @@ public class FtpSession implements Session {
     private String lastCommand = "USER";
     @Getter @Setter
     private int passivePort;
+    @Getter @Setter
+    private Timer timer;
 
     public FtpSession(Socket socket){
         clientSocket = socket;
@@ -63,6 +67,9 @@ public class FtpSession implements Session {
     @Override
     public void closeConnection() throws IOException {
         clientSocket.close();
+        out.close();
+        in.close();
+        isUp = false;
     }
 
     @Override
@@ -76,7 +83,14 @@ public class FtpSession implements Session {
     }
 
     @Override
+    public void listenForActivity(){
+        timer = new Timer(60000, this);
+        timer.start();
+    }
+
+    @Override
     public void handleRequestIfReceived() throws IOException {
+        timer.reset();
         String request = read();
         if(request.equals("")) return;
 
@@ -88,8 +102,8 @@ public class FtpSession implements Session {
             switch (message.getTitle()){
                 case "USER": write(new USER(this,message).execute()); break;
                 case "PASS": write(new PASS(this,message).execute()); break;
-                case "QUIT": break;
-                case "NOOP": break;
+                case "QUIT": write(new QUIT(this,message).execute()); closeConnection(); break;
+                case "NOOP": write(new NOOP(this,message).execute()); break;
                 case "PASV": write(new PASV(this,message).execute()); break;
                 case "STOR": new STOR(this,message).execute(); break;
                 case "RETR": new RETR(this,message).execute(); break;
@@ -110,9 +124,8 @@ public class FtpSession implements Session {
         }
 
         lastCommand = request;
+        timer.reset();
     }
-
-
 
     @Override
     public void setUserLogin(String login) {

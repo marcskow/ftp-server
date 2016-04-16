@@ -13,9 +13,9 @@ public class Parser {
         }
 
         Message result = new Message();
-        result.setLength(elements.length);
+        result.setLength(elements.length - 1);
         result.setTitle(elements[0]);
-        result.setArgs(Arrays.copyOfRange(elements,1,elements.length));
+        result.setArgs(Arrays.copyOfRange(elements,1,elements.length + 1));
 
         return result;
     }

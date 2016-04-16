@@ -44,7 +44,7 @@ public class RETR extends PassiveCommand{
         Socket socket = serverSocket.accept();
 
         Thread t2 = new Thread(() -> {
-           try(InputStream in = new FileInputStream(session.getRootDirectory() + filename);
+           try(InputStream in = new FileInputStream(session.getRootDirectory() + "/" + filename);
                OutputStream out = socket.getOutputStream()){
 
                byte[] buf = new byte[8192];

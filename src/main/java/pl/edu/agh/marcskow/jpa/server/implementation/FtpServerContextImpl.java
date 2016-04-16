@@ -8,5 +8,6 @@ import pl.edu.agh.marcskow.jpa.server.ftpServer.FtpServerContext;
 public class FtpServerContextImpl implements FtpServerContext{
     // TODO: 16.03.16
     private final String root = "ROOT";
-
+    private final int port = 4444;
+    private final int threadPool = 20;
 }

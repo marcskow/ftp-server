@@ -14,8 +14,6 @@ import java.util.concurrent.Executors;
 
 @Slf4j
 public class Server implements FtpServer, Runnable {
-    private final static int PORT = 4444;
-    private final static int FIXED_CLIENTS_AMOUNT = 20;
     private FtpServerContext context;
 
     @Getter @Setter
@@ -27,12 +25,12 @@ public class Server implements FtpServer, Runnable {
 
     @Override
     public void start(){
-        ExecutorService pool = Executors.newFixedThreadPool(FIXED_CLIENTS_AMOUNT);
+        ExecutorService pool = Executors.newFixedThreadPool(context.getThreadPool());
 
         try {
-            log.info("Session started. Server run on ip 127.0.0.1 port " + PORT);
+            log.info("Session started. Server run on ip 127.0.0.1 port " + context.getPort());
 
-            ServerSocket serverSocket = new ServerSocket(PORT);
+            ServerSocket serverSocket = new ServerSocket(context.getPort());
 
             while (isRunning) {
                 pool.execute(new ClientHandler(serverSocket.accept()));

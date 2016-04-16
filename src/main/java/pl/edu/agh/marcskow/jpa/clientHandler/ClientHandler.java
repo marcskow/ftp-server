@@ -21,12 +21,13 @@ public class ClientHandler implements Runnable {
     public void run() {
         try {
             session.startSession();
+            session.listenForActivity();
 
             while (session.isUp()){
                 session.handleRequestIfReceived();
      //           Thread.sleep(500);
             }
-
+            System.out.println("Wychodze");
             session.closeConnection();
         }
         catch (IOException e){  //| InterruptedException e){

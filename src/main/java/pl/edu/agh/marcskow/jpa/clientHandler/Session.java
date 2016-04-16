@@ -18,6 +18,8 @@ public interface Session {
 
     boolean isUp();
 
+    void listenForActivity();
+
     void closeConnection() throws IOException;
 
     void setUserLogin(String login);
