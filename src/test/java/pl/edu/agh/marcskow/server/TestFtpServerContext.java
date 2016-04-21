@@ -1,7 +1,7 @@
 package pl.edu.agh.marcskow.server;
 
 import lombok.Getter;
-import pl.edu.agh.marcskow.jpa.server.ftpServer.FtpServerContext;
+import pl.edu.agh.marcskow.ftpserver.server.ftpServer.FtpServerContext;
 
 @Getter
 public class TestFtpServerContext implements FtpServerContext {

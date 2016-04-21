@@ -13,9 +13,9 @@
         <property name="hibernate.connection.username">testuser</property>
         <property name="hibernate.connection.password">testuser2</property>
 
-        <mapping class="pl.edu.agh.marcskow.jpa.data.File" />
-        <mapping class="pl.edu.agh.marcskow.jpa.data.User" />
-        <mapping class="pl.edu.agh.marcskow.jpa.data.Group" />
+        <mapping class="pl.edu.agh.marcskow.ftpserver.data.File" />
+        <mapping class="pl.edu.agh.marcskow.ftpserver.data.User" />
+        <mapping class="pl.edu.agh.marcskow.ftpserver.data.Group" />
 
     </session-factory>
 </hibernate-configuration>
