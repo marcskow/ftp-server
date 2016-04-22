@@ -1,4 +1,4 @@
-package pl.edu.agh.marcskow.ftpserver.command;
+package pl.edu.agh.marcskow.ftpserver.clientHandler;
 
 import lombok.Data;
 

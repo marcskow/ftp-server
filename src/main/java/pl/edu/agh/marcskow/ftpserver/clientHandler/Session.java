@@ -6,6 +6,8 @@ import java.io.IOException;
  * Created by intenso on 06.04.16.
  */
 public interface Session {
+    String DEFAULT_ROOT_DIRECTORY = "/home/intenso/ftpServer";
+
     void startSession() throws IOException;
 
     void handleRequestIfReceived() throws IOException;
@@ -14,7 +16,7 @@ public interface Session {
 
     String read() throws IOException;
 
-    boolean isLoggedIn();
+    boolean getIsLoggedIn();
 
     boolean isUp();
 
@@ -25,11 +27,14 @@ public interface Session {
     void setUserLogin(String login);
     String getUserLogin();
 
-    void setUserPassword(String password);
-    String getUserPassword();
+    void setPassiveServerSocket(PassiveServer passiveServer);
+    PassiveServer getPassiveServerSocket();
 
-    void setNeededCommand(String command);
-    String getNeededCommand();
+    String getRootDirectory();
+    void setRootDirectory(String rootDirectory);
+
+    String getLastCommand();
+    void setLastCommand(String lastCommand);
 
     void setIsLoggedIn(boolean isLoggedIn);
 }

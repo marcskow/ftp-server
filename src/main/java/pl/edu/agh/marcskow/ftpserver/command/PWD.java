@@ -2,6 +2,7 @@ package pl.edu.agh.marcskow.ftpserver.command;
 
 import lombok.extern.slf4j.Slf4j;
 import pl.edu.agh.marcskow.ftpserver.clientHandler.FtpSession;
+import pl.edu.agh.marcskow.ftpserver.clientHandler.Session;
 import pl.edu.agh.marcskow.ftpserver.util.Message;
 
 import java.io.IOException;
@@ -9,10 +10,10 @@ import java.io.IOException;
 
 @Slf4j
 public class PWD implements Command {
-    private FtpSession session;
+    private Session session;
     private Message body;
 
-    public PWD(FtpSession session, Message body){
+    public PWD(Session session, Message body){
         this.session = session;
         this.body = body;
     }

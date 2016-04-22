@@ -20,7 +20,7 @@ public class USER implements Command {
         if(body.getArgs().length != 0) {
             String login = body.getArgument(0);
             session.setUserLogin(login);
-            session.setNeededCommand("PASS");
+            session.setLastCommand("PASS");
 
             session.write("331 Password required");
         }

@@ -1,8 +1,12 @@
 package pl.edu.agh.marcskow.ftpserver.command;
 
+import pl.edu.agh.marcskow.ftpserver.clientHandler.Session;
+import pl.edu.agh.marcskow.ftpserver.util.Message;
+
 /**
- * Created by intenso on 06.04.16.
+ * Factory pattern.
+ * getCommand method is used to get matching command from protocol.
  */
 public interface CommandFactory {
-    Command getCommand();
+    Command getCommand(Session session, Message message);
 }
