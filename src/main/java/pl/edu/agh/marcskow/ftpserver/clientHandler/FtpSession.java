@@ -41,7 +41,6 @@ public class FtpSession implements Session {
         client = new Client();
     }
 
-
     @Override
     public void handleRequestIfReceived() throws IOException {
         timer.reset();

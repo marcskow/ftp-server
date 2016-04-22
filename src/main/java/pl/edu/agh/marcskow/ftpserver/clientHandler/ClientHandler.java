@@ -9,11 +9,9 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
     private final static String OPENING_MESSAGE = "Hello there. It's Brownie. Welcome !";
 
-    private Socket clientSocket;
     private FtpSession session;
 
     public ClientHandler(Socket client){
-        clientSocket = client;
         session = new FtpSession(client);
     }
 
@@ -24,20 +22,18 @@ public class ClientHandler implements Runnable {
             session.listenForActivity();
 
             while (session.isUp()){
-                session.handleRequestIfReceived();
-     //           Thread.sleep(500);
+                session.handleRequestIfReceived();;
             }
-            System.out.println("Wychodze");
             session.closeConnection();
         }
-        catch (IOException e){  //| InterruptedException e){
+        catch (IOException e){
             log.error("Connection with client failed ", e);
         }
         finally {
             try {
                 session.closeConnection();
             } catch (IOException e){
-                log.error("Closing connection failed ", e);
+                log.error("Closing failed ", e);
             }
         }
     }
