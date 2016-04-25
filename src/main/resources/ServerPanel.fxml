@@ -55,28 +55,28 @@
                     <children>
                         <AnchorPane fx:id="optionsPane" prefHeight="233.0" prefWidth="249.0">
                             <children>
-                                <TextField fx:id="firstTextField" layoutX="83.0" layoutY="59.0" prefHeight="31.0" prefWidth="150.0" />
-                                <TextField fx:id="secondTextField" layoutX="83.0" layoutY="100.0" prefHeight="31.0" prefWidth="150.0" />
-                                <Label layoutX="83.0" layoutY="14.0" text="Options">
+                                <TextField fx:id="firstTextField" layoutX="83.0" layoutY="59.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <TextField fx:id="secondTextField" layoutX="83.0" layoutY="100.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <Label fx:id="subtitleLabel" layoutX="83.0" layoutY="14.0" text="Options" visible="false" AnchorPane.leftAnchor="63.0">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="firstLabel" layoutX="8.0" layoutY="64.0" text="Old name" />
-                                <Label fx:id="secondLabel" layoutX="5.0" layoutY="105.0" text="New name" />
-                                <TextField fx:id="thirdTextField" layoutX="83.0" layoutY="140.0" prefHeight="31.0" prefWidth="150.0" />
-                                <Label fx:id="thirdLabel" layoutX="9.0" layoutY="145.0" text="Password" />
-                                <CheckBox fx:id="moreOptionsCheckBox" layoutX="83.0" layoutY="189.0" mnemonicParsing="false" onAction="#moreOptions" text="More Options" />
+                                <Label fx:id="firstLabel" layoutX="8.0" layoutY="64.0" text="FirstL" visible="false" AnchorPane.leftAnchor="10.0" />
+                                <Label fx:id="secondLabel" layoutX="5.0" layoutY="105.0" text="SecondL" visible="false" AnchorPane.leftAnchor="10.0" />
+                                <TextField fx:id="thirdTextField" layoutX="83.0" layoutY="140.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <Label fx:id="thirdLabel" layoutX="9.0" layoutY="145.0" text="ThirdL" visible="false" AnchorPane.leftAnchor="10.0" />
+                                <CheckBox fx:id="moreOptionsCheckBox" layoutX="83.0" layoutY="189.0" mnemonicParsing="false" onAction="#moreOptions" text="More Options" visible="false" />
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="additionalOptionsPane" layoutX="8.0" layoutY="233.0" prefHeight="363.0" prefWidth="234.0">
                             <children>
-                                <TextField fx:id="fourthTextField" layoutX="70.0" layoutY="14.0" prefHeight="31.0" prefWidth="150.0" />
-                                <TextField fx:id="fifthTextField" layoutX="70.0" layoutY="57.0" prefHeight="31.0" prefWidth="150.0" />
-                                <Label fx:id="fourthLabel" layoutY="19.0" text="Old Group" />
-                                <Label fx:id="fifthLabel" layoutY="62.0" text="New" />
-                                <Button fx:id="setGroupButton" layoutX="70.0" layoutY="97.0" mnemonicParsing="false" onAction="#setUserGroup" prefHeight="33.0" prefWidth="150.0" text="Set User Group" />
-                                <TextArea editable="false" layoutX="17.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" text="Add User  2nd &amp; 3rd&#10;Add Group  2nd&#10;Edit User  1st &amp; 2nd&#10;Edit Group 1st &amp; 2nd&#10;Remove User 2nd&#10;Remove Group 2nd&#10;Set User Group 2nd, 4th,&#10;5th.&#10;" />
+                                <TextField fx:id="fourthTextField" layoutX="70.0" layoutY="14.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <TextField fx:id="fifthTextField" layoutX="70.0" layoutY="57.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <Label fx:id="fourthLabel" layoutY="19.0" text="Old Group" visible="false" />
+                                <Label fx:id="fifthLabel" layoutY="62.0" text="New" visible="false" />
+                                <Button fx:id="setGroupButton" layoutX="70.0" layoutY="97.0" mnemonicParsing="false" onAction="#setUserGroup" prefHeight="33.0" prefWidth="150.0" text="Set User Group" visible="false" />
+                                <TextArea fx:id="additionalTextArea" editable="false" layoutX="17.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" text="Add User  2nd &amp; 3rd&#10;Add Group  2nd&#10;Edit User  1st &amp; 2nd&#10;Edit Group 1st &amp; 2nd&#10;Remove User 2nd&#10;Remove Group 2nd&#10;Set User Group 2nd, 4th,&#10;5th.&#10;" visible="false" />
                             </children>
                         </AnchorPane>
                     </children></AnchorPane>
