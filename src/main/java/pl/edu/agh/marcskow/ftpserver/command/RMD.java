@@ -8,13 +8,11 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by intenso on 16.04.16.
- */
+
 @Slf4j
 public class RMD implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public RMD(Session session, Message body){
         this.session = session;
@@ -28,7 +26,7 @@ public class RMD implements Command {
         deleteFile(path);
     }
 
-    public void deleteFile(String path) {
+    private void deleteFile(String path) {
         Thread t = new Thread(() -> {
             try {
                 File directory = new File(path);

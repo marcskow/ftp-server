@@ -13,8 +13,8 @@ import pl.edu.agh.marcskow.ftpserver.data.User;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class DatabaseTable {
-    private ObservableList<User> users;
     private TableView<User> tableView;
 
     public DatabaseTable(TableView<User> tableView){
@@ -23,7 +23,7 @@ public class DatabaseTable {
 
     public void updateTableView(){
         tableView.setEditable(true);
-        users = getUsers();
+        ObservableList<User> users = getUsers();
 
         TableColumn userId = new TableColumn("Id");
         userId.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
@@ -50,9 +50,7 @@ public class DatabaseTable {
         hibernateSession.beginTransaction();
 
         List list = hibernateSession.createCriteria(User.class).list();
-        System.out.println(((User)list.get(0)).getUsername());
         ObservableList<User> observableList = FXCollections.observableList(list);
-        System.out.println(observableList.get(0).getUsername());
 
         hibernateSession.close();
 

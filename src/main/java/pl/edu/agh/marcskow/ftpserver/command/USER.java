@@ -7,8 +7,8 @@ import java.io.IOException;
 
 
 public class USER implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public USER(Session session, Message body){
         this.session = session;
@@ -20,7 +20,6 @@ public class USER implements Command {
         if(body.getArgs().length != 0) {
             String login = body.getArgument(0);
             session.setUserLogin(login);
-            session.setLastCommand("PASS");
 
             session.write("331 Password required");
         }

@@ -8,8 +8,8 @@ import java.io.IOException;
 
 
 public class CWD implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public CWD(Session session, Message body){
         this.session = session;

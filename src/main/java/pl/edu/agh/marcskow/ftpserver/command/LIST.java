@@ -12,9 +12,9 @@ import java.util.LinkedList;
 
 @Slf4j
 public class LIST implements Command {
-    private Session session;
-    private Message body;
-    private ServerSocket serverSocket;
+    private final Session session;
+    private final Message body;
+    private final ServerSocket serverSocket;
 
     public LIST(Session session, Message body) {
         this.session = session;
@@ -29,7 +29,7 @@ public class LIST implements Command {
             try {
                 session.write("150 Opening ASCII mode data connection for '/bin/ls'.");
             } catch (IOException e) {
-                log.error("error ", e);
+                log.error("Error in " + body, e);
             }
         });
         t.start();

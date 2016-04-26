@@ -9,8 +9,8 @@ import java.io.IOException;
 
 @Slf4j
 public class NOOP implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public NOOP(Session session, Message body){
         this.session = session;

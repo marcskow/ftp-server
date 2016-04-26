@@ -6,10 +6,9 @@ import java.io.IOException;
 
 @Slf4j
 public class Timer extends Thread {
-    private FtpSession session;
+    private final FtpSession session;
+    private final int length;
     private int timeout;
-    private int length;
-    private int sleepRate = 100;
 
     public Timer(int length, FtpSession session){
         this.length = length;
@@ -21,6 +20,7 @@ public class Timer extends Thread {
     }
 
     public void run(){
+        int sleepRate = 100;
         while(true){
             try{
                 Thread.sleep(sleepRate);
@@ -33,6 +33,7 @@ public class Timer extends Thread {
                 timeout += sleepRate;
                 if(timeout > length){
                     connectionLost();
+                    break;
                 }
             }
         }

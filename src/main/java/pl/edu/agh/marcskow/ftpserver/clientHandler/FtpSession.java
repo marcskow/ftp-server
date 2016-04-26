@@ -10,6 +10,7 @@ import pl.edu.agh.marcskow.ftpserver.command.CommandFactory;
 import pl.edu.agh.marcskow.ftpserver.command.CommandFactoryImpl;
 import pl.edu.agh.marcskow.ftpserver.command.Commands;
 import pl.edu.agh.marcskow.ftpserver.exceptions.InvalidMessageException;
+import pl.edu.agh.marcskow.ftpserver.server.ftpServer.FtpServerContext;
 import pl.edu.agh.marcskow.ftpserver.util.Message;
 import pl.edu.agh.marcskow.ftpserver.util.Parser;
 
@@ -19,9 +20,9 @@ import java.net.Socket;
 @Slf4j
 @Getter @Setter
 public class FtpSession implements Session {
+    private final Socket clientSocket;
     private PassiveServer passiveServerSocket;
-    private Socket clientSocket;
-    private String rootDirectory = "/home/intenso/ftpServer";
+    private String rootDirectory;
     private String lastCommand = "";
     private Client client;
     private PrintWriter out;
@@ -29,8 +30,9 @@ public class FtpSession implements Session {
     private Timer timer;
     private boolean isUp;
 
-    public FtpSession(Socket socket){
+    public FtpSession(Socket socket, FtpServerContext context){
         clientSocket = socket;
+        rootDirectory = context.getRoot();
     }
 
     @Override
@@ -58,13 +60,12 @@ public class FtpSession implements Session {
 
             if(Commands.isPassive(title) && !lastCommand.equals("PASV")){
                 write("503 Bad sequence of commands ");
-            } else if (Commands.needAuthorization(title) && !client.isLoggedIn()){
+            } else if (Commands.needAuthorization(title) && !getIsLoggedIn()){
                 write("410 Invalid login or password");
             } else {
                 command.execute();
             }
 
-            lastCommand = message.getTitle();
             log.info("REQ: " + message);
         }
         catch (InvalidMessageException  e){

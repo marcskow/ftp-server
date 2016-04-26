@@ -57,7 +57,7 @@
                             <children>
                                 <TextField fx:id="firstTextField" layoutX="83.0" layoutY="59.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
                                 <TextField fx:id="secondTextField" layoutX="83.0" layoutY="100.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
-                                <Label fx:id="subtitleLabel" layoutX="83.0" layoutY="14.0" text="Options" visible="false" AnchorPane.leftAnchor="63.0">
+                                <Label fx:id="subtitleLabel" layoutX="56.0" layoutY="15.0" text="Options" visible="false" AnchorPane.leftAnchor="56.0">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
@@ -66,17 +66,15 @@
                                 <Label fx:id="secondLabel" layoutX="5.0" layoutY="105.0" text="SecondL" visible="false" AnchorPane.leftAnchor="10.0" />
                                 <TextField fx:id="thirdTextField" layoutX="83.0" layoutY="140.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
                                 <Label fx:id="thirdLabel" layoutX="9.0" layoutY="145.0" text="ThirdL" visible="false" AnchorPane.leftAnchor="10.0" />
-                                <CheckBox fx:id="moreOptionsCheckBox" layoutX="83.0" layoutY="189.0" mnemonicParsing="false" onAction="#moreOptions" text="More Options" visible="false" />
                             </children>
                         </AnchorPane>
                         <AnchorPane fx:id="additionalOptionsPane" layoutX="8.0" layoutY="233.0" prefHeight="363.0" prefWidth="234.0">
                             <children>
-                                <TextField fx:id="fourthTextField" layoutX="70.0" layoutY="14.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
-                                <TextField fx:id="fifthTextField" layoutX="70.0" layoutY="57.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
-                                <Label fx:id="fourthLabel" layoutY="19.0" text="Old Group" visible="false" />
-                                <Label fx:id="fifthLabel" layoutY="62.0" text="New" visible="false" />
-                                <Button fx:id="setGroupButton" layoutX="70.0" layoutY="97.0" mnemonicParsing="false" onAction="#setUserGroup" prefHeight="33.0" prefWidth="150.0" text="Set User Group" visible="false" />
-                                <TextArea fx:id="additionalTextArea" editable="false" layoutX="17.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" text="Add User  2nd &amp; 3rd&#10;Add Group  2nd&#10;Edit User  1st &amp; 2nd&#10;Edit Group 1st &amp; 2nd&#10;Remove User 2nd&#10;Remove Group 2nd&#10;Set User Group 2nd, 4th,&#10;5th.&#10;" visible="false" />
+                                <TextField fx:id="fourthTextField" layoutX="71.0" layoutY="90.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <TextField fx:id="fifthTextField" layoutX="71.0" layoutY="133.0" prefHeight="31.0" prefWidth="150.0" visible="false" />
+                                <Label fx:id="fourthLabel" layoutX="1.0" layoutY="95.0" text="FourthL" visible="false" AnchorPane.leftAnchor="1.0" />
+                                <Label fx:id="fifthLabel" layoutX="1.0" layoutY="138.0" text="FifthL" visible="false" />
+                                <Button fx:id="setGroupButton" layoutX="12.0" layoutY="37.0" mnemonicParsing="false" onAction="#setUserGroup" prefHeight="33.0" prefWidth="211.0" text="Set User Group" />
                             </children>
                         </AnchorPane>
                     </children></AnchorPane>
@@ -99,7 +97,7 @@
                 </AnchorPane>
             </items>
         </SplitPane>
-        <Button fx:id="rootFolderButton" alignment="CENTER" layoutX="11.0" layoutY="107.0" mnemonicParsing="false" onAction="#setRootFolder" prefHeight="51.0" prefWidth="146.0" text="Root Folder">
+        <Button fx:id="rootFolderButton" alignment="CENTER" layoutX="11.0" layoutY="107.0" mnemonicParsing="false" onAction="#setRootFolder" prefHeight="51.0" prefWidth="146.0" text="Settings">
             <font>
                 <Font size="24.0" />
             </font>

@@ -11,8 +11,8 @@ import java.io.IOException;
 
 @Slf4j
 public class DELE implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public DELE(Session session, Message body){
         this.session = session;
@@ -25,8 +25,8 @@ public class DELE implements Command {
 
         deleteFile(path);
     }
-    
-    public void deleteFile(String path) {
+
+    private void deleteFile(String path) {
         Thread t = new Thread(() -> {
             try {
                 File file = new File(path);

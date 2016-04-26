@@ -1,4 +1,4 @@
-package pl.edu.agh.marcskow.ftpserver.server;
+package pl.edu.agh.marcskow.ftpserver.server.implementation;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public class Server implements FtpServer, Runnable {
             ServerSocket serverSocket = new ServerSocket(context.getPort());
 
             while (isRunning) {
-                pool.execute(new ClientHandler(serverSocket.accept()));
+                pool.execute(new ClientHandler(serverSocket.accept(), context));
             }
         }
         catch (IOException e){

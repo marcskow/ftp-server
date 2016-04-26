@@ -11,8 +11,8 @@ import java.io.IOException;
 
 @Slf4j
 public class MKD implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public MKD(Session session, Message body){
         this.session = session;
@@ -26,7 +26,7 @@ public class MKD implements Command {
         makeDirectory(path);
     }
 
-    public void makeDirectory(String path) {
+    private void makeDirectory(String path) {
         Thread t = new Thread(() -> {
             boolean result;
             File directory = new File(path);

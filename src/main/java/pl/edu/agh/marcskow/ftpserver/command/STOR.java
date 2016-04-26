@@ -10,9 +10,9 @@ import java.net.Socket;
 
 @Slf4j
 public class STOR implements Command {
-    private Session session;
-    private Message body;
-    private ServerSocket serverSocket;
+    private final Session session;
+    private final Message body;
+    private final ServerSocket serverSocket;
 
     public STOR(Session session, Message body){
         this.session = session;
@@ -25,7 +25,7 @@ public class STOR implements Command {
         storFile();
     }
 
-    public void storFile() throws IOException {
+    private void storFile() throws IOException {
         String filename = body.getArgument(0);
 
         Thread t = new Thread(() -> {

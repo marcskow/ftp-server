@@ -37,7 +37,6 @@ public class FtpSessionTest {
         t.start();
 
         Socket socket = new Socket("127.0.0.1",4444);
-       ftpSession = new FtpSession(socket);
     }
 
 
@@ -49,8 +48,4 @@ public class FtpSessionTest {
         socketReader.close();
     }
 
-    @Test
-    public void testIsUp() throws Exception {
-
-    }
 }

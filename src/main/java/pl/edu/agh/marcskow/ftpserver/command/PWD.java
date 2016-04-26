@@ -10,8 +10,8 @@ import java.io.IOException;
 
 @Slf4j
 public class PWD implements Command {
-    private Session session;
-    private Message body;
+    private final Session session;
+    private final Message body;
 
     public PWD(Session session, Message body){
         this.session = session;

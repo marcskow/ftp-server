@@ -26,7 +26,6 @@ public class User {
     @Column(name="username", nullable = false, length = 20)
     private String username;
 
-    // TODO: 05.03.16
     // Application will use md5 (or SHA) method to get hash
     // There is example
     // http://stackoverflow.com/questions/415953/how-can-i-generate-an-md5-hash

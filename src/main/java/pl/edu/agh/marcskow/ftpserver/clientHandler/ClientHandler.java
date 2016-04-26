@@ -1,18 +1,17 @@
 package pl.edu.agh.marcskow.ftpserver.clientHandler;
 
 import lombok.extern.slf4j.Slf4j;
+import pl.edu.agh.marcskow.ftpserver.server.ftpServer.FtpServerContext;
 
 import java.io.*;
 import java.net.Socket;
 
 @Slf4j
 public class ClientHandler implements Runnable {
-    private final static String OPENING_MESSAGE = "Hello there. It's Brownie. Welcome !";
+    private final FtpSession session;
 
-    private FtpSession session;
-
-    public ClientHandler(Socket client){
-        session = new FtpSession(client);
+    public ClientHandler(Socket client, FtpServerContext context){
+        session = new FtpSession(client, context);
     }
 
     @Override
@@ -22,7 +21,7 @@ public class ClientHandler implements Runnable {
             session.listenForActivity();
 
             while (session.isUp()){
-                session.handleRequestIfReceived();;
+                session.handleRequestIfReceived();
             }
             session.closeConnection();
         }

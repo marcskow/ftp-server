@@ -13,9 +13,9 @@ import java.net.Socket;
 
 @Slf4j
 public class RETR implements Command {
-    private Session session;
-    private Message body;
-    private ServerSocket serverSocket;
+    private final Session session;
+    private final Message body;
+    private final ServerSocket serverSocket;
 
     public RETR(Session session, Message body){
         this.session = session;
@@ -28,7 +28,7 @@ public class RETR implements Command {
         sendFile();
     }
 
-    public void sendFile() throws IOException {
+    private void sendFile() throws IOException {
         String filename = body.getArgument(0);
 
         Thread t = new Thread(() -> {

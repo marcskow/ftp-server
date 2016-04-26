@@ -18,7 +18,6 @@ public class ServerApplication extends Application {
         
     }
 
-
     public static void main(String[] args) {
         Application.launch(ServerApplication.class);
     }

@@ -2,9 +2,7 @@ package pl.edu.agh.marcskow.ftpserver.clientHandler;
 
 import java.io.IOException;
 
-/**
- * Created by intenso on 06.04.16.
- */
+
 public interface Session {
     String DEFAULT_ROOT_DIRECTORY = "/home/intenso/ftpServer";
 
@@ -16,8 +14,6 @@ public interface Session {
 
     String read() throws IOException;
 
-    boolean getIsLoggedIn();
-
     boolean isUp();
 
     void listenForActivity();
@@ -25,16 +21,22 @@ public interface Session {
     void closeConnection() throws IOException;
 
     void setUserLogin(String login);
+
     String getUserLogin();
 
     void setPassiveServerSocket(PassiveServer passiveServer);
+
     PassiveServer getPassiveServerSocket();
 
     String getRootDirectory();
+
     void setRootDirectory(String rootDirectory);
 
     String getLastCommand();
+
     void setLastCommand(String lastCommand);
+
+    boolean getIsLoggedIn();
 
     void setIsLoggedIn(boolean isLoggedIn);
 }
