@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 
 
+/**
+ * Change working directory.
+ */
 public class CWD implements Command {
     private final Session session;
     private final Message body;

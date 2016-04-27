@@ -11,6 +11,9 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Implementation of "RETR file". Send file to the client.
+ */
 @Slf4j
 public class RETR implements Command {
     private final Session session;

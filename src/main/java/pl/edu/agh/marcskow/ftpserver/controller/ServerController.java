@@ -16,6 +16,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+/**
+ * Main class of the controller layer.
+ * View is defined in fxml that's why in the controller we can simple use FXML annotation
+ * to inject view elements.
+ */
 public class ServerController extends AnchorPane implements Initializable {
 
     //Action panel
@@ -45,12 +50,16 @@ public class ServerController extends AnchorPane implements Initializable {
     private Server server = new Server(new FtpServerContextImpl());
     private FtpServerContext context = new FtpServerContextImpl();
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeView();
     }
 
+    /**
+     * Run button onClick method.
+     * This method starts the server. If server settings were defined before
+     * it will run with specified settings. Otherwise server will run with default settings.
+     */
     @FXML
     public void runServer(){
         if(!server.isRunning()) {
@@ -59,6 +68,9 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * This method stops the server
+     */
     @FXML
     public void stopServer(){
         if(server.isRunning()) {
@@ -66,12 +78,21 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Load data from database and display it on the TableView
+     */
     @FXML
     public void setDatabase(){
         DatabaseTable databaseTableView = new DatabaseTable(databaseTable);
         databaseTableView.updateTableView();
     }
 
+    /**
+     * Add User button listener. Add new user to database.
+     * If this method will be executed once it will show two text fields
+     * if this method will is performed for the second time it will read data from text fields
+     * and sends them to the database (by calling Hibernate.addUser method)
+     */
     @FXML
     public void addUser() {
         String name;
@@ -93,6 +114,12 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Add Group button listener. Add new group to database.
+     * If this method will be executed once it will show one text fields
+     * if this method will is performed for the second time it will read data from text fields
+     * and sends them to the database (by calling Hibernate.addGroup method)
+     */
     @FXML
     public void addGroup() {
         String name;
@@ -112,6 +139,12 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Edit user button listener. Update user data.
+     * If this method will be executed once it will show one text fields
+     * if this method will is performed for the second time it will read data from text fields
+     * and sends them to the database
+     */
     @FXML
     public void editUser(){
         String oldName;
@@ -137,6 +170,12 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Edit group button listener. Update group data.
+     * If this method will be executed once it will show one text fields
+     * if this method will is performed for the second time it will read data from text fields
+     * and sends them to the database
+     */
     @FXML
     public void editGroup() {
         String oldName;
@@ -158,6 +197,10 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Remove User button listener.
+     * Invoke deleting user from database.
+     */
     @FXML
     public void removeUser() {
         String username;
@@ -177,6 +220,10 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Remove Group button listener.
+     * Invoke deleting group from database.
+     */
     @FXML
     public void removeGroup(){
         String name;
@@ -198,6 +245,10 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Change user group
+     * Invoke updating user group in database.
+     */
     @FXML
     public void setUserGroup(){
         String username;
@@ -223,6 +274,9 @@ public class ServerController extends AnchorPane implements Initializable {
         }
     }
 
+    /**
+     * Change server's root folder.
+     */
     @FXML
     public void setRootFolder(){
         String rootPath;

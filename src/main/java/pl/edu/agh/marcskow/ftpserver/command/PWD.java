@@ -7,7 +7,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 
 import java.io.IOException;
 
-
+/**
+ * Print working directory.
+ */
 @Slf4j
 public class PWD implements Command {
     private final Session session;

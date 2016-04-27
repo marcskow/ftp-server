@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.edu.agh.marcskow.ftpserver.server.ftpServer.FtpServerContext;
 
+/**
+ * FtpServerContext implementation
+ * @see FtpServerContext
+ */
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor

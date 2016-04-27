@@ -6,7 +6,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 
 import java.io.IOException;
 
-
+/**
+ * NOOP command. Do nothing but keep connection up.
+ */
 @Slf4j
 public class NOOP implements Command {
     private final Session session;

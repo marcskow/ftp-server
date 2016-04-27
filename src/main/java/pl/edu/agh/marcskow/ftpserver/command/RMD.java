@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 
 
+/**
+ * Implementation of "RMD directory". Delete directory from server.
+ */
 @Slf4j
 public class RMD implements Command {
     private final Session session;

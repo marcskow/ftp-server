@@ -4,6 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
+/**
+ * Timer is responsible for checking if client is active.
+ */
 @Slf4j
 public class Timer extends Thread {
     private final FtpSession session;
@@ -15,10 +18,16 @@ public class Timer extends Thread {
         this.session = session;
     }
 
+    /**
+     * Reset timeout timer
+     */
     public synchronized void reset(){
         timeout = 0;
     }
 
+    /**
+     * Run timer
+     */
     public void run(){
         int sleepRate = 100;
         while(true){
@@ -39,7 +48,7 @@ public class Timer extends Thread {
         }
     }
 
-    public void connectionLost(){
+    private void connectionLost(){
         session.setUp(false);
         try {
             session.closeConnection();

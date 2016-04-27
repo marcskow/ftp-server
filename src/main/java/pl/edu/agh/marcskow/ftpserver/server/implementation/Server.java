@@ -12,6 +12,13 @@ import java.net.ServerSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+/**
+ * FtpServer implementation.
+ * It's the default implementation of the server.
+ * FtpServerContext contains max amount of thread pool, server root folder and port.
+ * @see FtpServer
+ */
 @Slf4j
 public class Server implements FtpServer, Runnable {
     private FtpServerContext context;
@@ -19,9 +26,14 @@ public class Server implements FtpServer, Runnable {
     @Getter @Setter
     private boolean isRunning;
 
+    /**
+     * The only one available constructor.
+     * @param context is server context contains max amount of thread pool, server root folder and port.
+     */
     public Server(FtpServerContext context) {
         this.context = context;
     }
+
 
     @Override
     public void start(){

@@ -8,7 +8,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Delete specified file.
+ */
 @Slf4j
 public class DELE implements Command {
     private final Session session;

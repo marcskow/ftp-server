@@ -5,7 +5,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 
 import java.io.IOException;
 
-
+/**
+ * Implementation of "USER user_name" command. Sing in new user whose login is user_name.
+ */
 public class USER implements Command {
     private final Session session;
     private final Message body;

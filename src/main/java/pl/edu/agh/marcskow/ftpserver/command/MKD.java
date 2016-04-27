@@ -8,7 +8,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * Implementation of "MKD directory" ftp command. Make new directory.
+ */
 @Slf4j
 public class MKD implements Command {
     private final Session session;

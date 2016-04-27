@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * This class contains methods to check whether the command belong to the specific group.
+ */
 public class Commands {
     private final static List<String> passiveCommands = new ArrayList<>(Arrays.asList("LIST", "STOR", "RETR", "APPE"));
     private final static List<String> withoutAuthorization = new ArrayList<>(Arrays.asList("USER", "PASS", "QUIT"));

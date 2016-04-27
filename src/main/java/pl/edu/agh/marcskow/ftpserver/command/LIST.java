@@ -10,6 +10,9 @@ import java.net.Socket;
 import java.util.LinkedList;
 
 
+/**
+ * Send the contents of the current directory.
+ */
 @Slf4j
 public class LIST implements Command {
     private final Session session;

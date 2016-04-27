@@ -9,6 +9,9 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 import java.io.IOException;
 import java.net.ServerSocket;
 
+/**
+ * Open passive mode.
+ */
 @Slf4j
 public class PASV implements Command {
     private final Session session;

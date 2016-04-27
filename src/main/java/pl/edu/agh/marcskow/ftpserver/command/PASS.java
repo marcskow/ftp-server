@@ -10,7 +10,10 @@ import pl.edu.agh.marcskow.ftpserver.util.Message;
 import java.io.IOException;
 import java.util.List;
 
-
+/**
+ * PASS command has to be send after sending USER command.
+ * Receive password from user and check is it valid.
+ */
 public class PASS implements Command{
     private final Session session;
     private final Message body;

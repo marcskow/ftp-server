@@ -21,6 +21,10 @@ public class DatabaseTable {
         this.tableView = tableView;
     }
 
+    /**
+     * This method is responsible for retrieving data from the database
+     * and showing them in the TableView
+     */
     public void updateTableView(){
         tableView.setEditable(true);
         ObservableList<User> users = getUsers();
@@ -44,7 +48,7 @@ public class DatabaseTable {
 
     }
 
-    public ObservableList<User> getUsers(){
+    private ObservableList<User> getUsers(){
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session hibernateSession = sessionFactory.openSession();
         hibernateSession.beginTransaction();

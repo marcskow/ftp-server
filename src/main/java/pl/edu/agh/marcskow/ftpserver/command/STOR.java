@@ -8,6 +8,10 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+/**
+ * Implementation of "STOR file" command. Receive a file from client and save it.
+ */
 @Slf4j
 public class STOR implements Command {
     private final Session session;

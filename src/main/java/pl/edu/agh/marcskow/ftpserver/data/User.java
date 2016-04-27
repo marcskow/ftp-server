@@ -1,7 +1,5 @@
 package pl.edu.agh.marcskow.ftpserver.data;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import lombok.Getter;
 import lombok.Setter;
 
