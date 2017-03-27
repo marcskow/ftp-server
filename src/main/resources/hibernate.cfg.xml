@@ -5,17 +5,19 @@
 
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
 
         <!-- Assume test is the database name -->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testdb</property>
-        <property name="hibernate.connection.username">testuser</property>
-        <property name="hibernate.connection.password">testuser2</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/testdb</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">false</property>
 
         <mapping class="pl.edu.agh.marcskow.ftpserver.data.File" />
         <mapping class="pl.edu.agh.marcskow.ftpserver.data.User" />
         <mapping class="pl.edu.agh.marcskow.ftpserver.data.Group" />
-
     </session-factory>
 </hibernate-configuration>

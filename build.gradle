@@ -2,8 +2,12 @@ group 'pl.agh.edu.marcskow'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
+version = '1.0'
+
+mainClassName = 'pl.edu.agh.marcskow.ftpserver.application.ServerApplication'
 
 repositories {
     mavenCentral()
